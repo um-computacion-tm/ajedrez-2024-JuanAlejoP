@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2024-08-15
+
+### Added
+
+- Added placeholders for remaining pieces.
+- Added subclasses `Knight`, `Bishop`, `Queen`, and `King`.
+- Updated the `Board` class to initialize the positions of all pieces on the board.
+
+### Changed
+
+- Improved the initialization process for piece placement on the board.
+
 ## [0.1.0] - 2024-08-15
 
 ### Added
