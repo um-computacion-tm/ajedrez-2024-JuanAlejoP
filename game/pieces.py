@@ -10,3 +10,19 @@ class Pawn(Piece):
 class Rook(Piece):
     def __init__(self):
         ...
+
+class Bishop(Piece):
+    def __init__(self):
+        ...
+
+class Knight(Piece):
+    def __init__(self):
+        ...
+
+class Queen(Piece):
+    def __init__(self):
+        ...
+
+class King(Piece):
+    def __init__(self):
+        ...
