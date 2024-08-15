@@ -3,10 +3,10 @@ class Piece:
         self.__colour__ = colour
         ...
 
-class Pawn:
-    def __init__(Piece):
+class Pawn(Piece):
+    def __init__(self):
         ...
 
-class Rook:
-    def __init__(Piece):
+class Rook(Piece):
+    def __init__(self):
         ...

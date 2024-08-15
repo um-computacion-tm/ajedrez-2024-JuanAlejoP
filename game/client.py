@@ -7,11 +7,12 @@ def main():
 
 def play(chess):
     try:
-        print(chess.show_board())
-        from_row = int(input('From Row: '))
-        from_col = int(input('From Col: '))
-        to_row = int('To Row: ')
-        to_col = int(input('To Col: '))
+        # print(chess.show_board())
+        print('Turno: ', chess.turn  )
+        from_row = int(input('Fila Inicial: '))
+        from_col = int(input('Columna Inicial: '))
+        to_row = int(input('Fila Final: '))
+        to_col = int(input('Columna Final: '))
         chess.move(
             from_row,
             from_col,
@@ -19,7 +20,7 @@ def play(chess):
             to_col
         )
     except Exception as e:
-        print('ERROR!')
+        print('ERROR!', e)
 
 
 
