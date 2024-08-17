@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2024-08-16
+
+### Added
+
+- Added tests for the `Board` class.
+
+### Fixed
+
+- The positions of the Kings and Queens were fixed, as they were previously reversed.
+
+## [0.1.2] - 2024-08-16
+
+### Added
+
+- Added a `ValueError` in the `move` method for cases where no piece is found in the selected starting position.
+
+### Changed
+
+- Updated the `Pawn`, `Rook`, `Knight`, `Bishop`, `Queen`, and `King` subclasses to correctly inherit attributes from the `Piece` superclass.
+
+### Fixed
+
+- Fixed the `move` method in the `Chess` class to correctly move pieces on the board. Previously, the method failed to perform the move.
+
 ## [0.1.1] - 2024-08-15
 
 ### Added
