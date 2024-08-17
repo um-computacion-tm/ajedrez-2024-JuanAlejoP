@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2024-08-16
+
+### Added
+
+- Added tests for the `Board` class.
+
+### Fixed
+
+- The positions of the Kings and Queens were fixed, as they were previously reversed.
+
 ## [0.1.2] - 2024-08-16
 
 ### Added
