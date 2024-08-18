@@ -11,6 +11,10 @@ class TestRookMovement(unittest.TestCase):
         self.assertTrue(self.white_rook.valid_move(0, 0, 0, 7))
         self.assertFalse(self.white_rook.valid_move(0, 0, 1, 7))
 
+    def test_vertical_move(self):
+        self.assertTrue(self.black_rook.valid_move(0, 0, 7, 0))
+        self.assertFalse(self.black_rook.valid_move(0, 0, 7, 1))
+
 
 
 
