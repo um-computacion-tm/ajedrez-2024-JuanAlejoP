@@ -6,13 +6,12 @@ class TestChess(unittest.TestCase):
 
     def setUp(self):
         self.chess = Chess()
-        self.chess._Chess__turn = 'WHITE'
 
     def test_move_piece(self):
         self.chess.move(1, 0, 2, 0)
-        piece = self.chess._Chess__board.get_piece(2, 0)
+        piece = self.chess.__board__.get_piece(2, 0)
         self.assertIsInstance(piece, Pawn)
-        self.assertIsNone(self.chess._Chess__board.get_piece(1, 0))
+        self.assertIsNone(self.chess.__board__.get_piece(1, 0))
     
     def test_no_piece_error(self):
         with self.assertRaises(ValueError):
