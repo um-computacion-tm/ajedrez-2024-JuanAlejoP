@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2024-08-18
+
+### Added
+
+- Added basic logic for the `Rook` piece's movement.
+- Added unit tests to verify the `Rook` piece's movement logic.
+
+### Fixed
+
+- Fixed issues with existing chess tests.
+- Fixed the `Chess` class to correctly initialize the turn as `WHITE`.
+
+### Changed
+
+- Made minor readability improvements in the `Client` class.
+
 ## [0.1.3] - 2024-08-16
 
 ### Added
