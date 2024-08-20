@@ -10,6 +10,9 @@ class TestPiece(unittest.TestCase):
     def test_init(self):
         self.assertEqual(self.white_piece.__colour__, 'WHITE')
         self.assertEqual(self.black_piece.__colour__, 'BLACK')
+    
+    def test_within_bounds(self):
+        ...
 
 if __name__ == '__main__':
     unittest.main()
