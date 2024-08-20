@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2024-08-20
+
+### Added
+
+- Added a `valid_move` method for the `Pawn`, `Bishop`, `King`, and `Queen` pieces, verifying their characteristic movement capabilities.
+- Added unit tests for the `King` and `Queen` pieces.
+
+### Changed
+
+- Refactored the codebase to separate each chess piece into individual files. Previously, all pieces were contained in `pieces.py`; now, each piece, including the superclass `Piece`, has its own file. The same structure was applied to their respective tests, separating them into individual files.
+- Organized the pieces and their tests into `pieces` and `pieces_t` directories, respectively.
+
 ## [0.1.4] - 2024-08-18
 
 ### Added
