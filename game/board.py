@@ -2,12 +2,18 @@ from game.pieces import *
 
 class Board:
     def __init__(self):
-        self.__positions__ = []
-        for _ in range(8):
-            col = []
-            for _ in range(8):
-                col.append(None)
-            self.__positions__.append(col)
+        self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
+
+    def place_piece(self, piece, row, col):
+        self.__positions__[row][col] = piece
+
+    def get_piece(self, row, col):
+        return self.__positions__[row][col]
+
+    def within_bounds(self, row, col):
+        return 0 <= row < 8 and 0 <= col < 8
+
+class BoardInitializer:
 
         self.__positions__[0][0] = Rook('WHITE')
         self.__positions__[0][1] = Knight('WHITE')
@@ -30,9 +36,3 @@ class Board:
         self.__positions__[7][5] = Bishop('BLACK')
         self.__positions__[7][6] = Knight('BLACK')
         self.__positions__[7][7] = Rook('BLACK')
-
-    def get_piece(self, row, col):
-        return self.__positions__[row][col]
-    
-    def within_bounds(self, row, col):
-        return 0 <= row < 8 and 0 <= col < 8
