@@ -33,3 +33,6 @@ class Board:
 
     def get_piece(self, row, col):
         return self.__positions__[row][col]
+    
+    def within_bounds(self, row, col):
+        return 0 <= row < 8 and 0 <= col < 8
