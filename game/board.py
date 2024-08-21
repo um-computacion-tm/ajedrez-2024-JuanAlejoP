@@ -4,7 +4,7 @@ class Board:
     def __init__(self):
         self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
 
-    def place_piece(self, piece, row, col):
+    def place_piece(self, piece: Piece, row, col):
         self.__positions__[row][col] = piece
 
     def get_piece(self, row, col):
@@ -12,27 +12,29 @@ class Board:
 
     def within_bounds(self, row, col):
         return 0 <= row < 8 and 0 <= col < 8
-
+    
 class BoardInitializer:
+    def __init__(self):
+        self.white_back_row = [
+            Rook('WHITE'), Knight('WHITE'), Bishop('WHITE'), 
+            King('WHITE'), Queen('WHITE'), Bishop('WHITE'), 
+            Knight('WHITE'), Rook('WHITE')
+        ]
+        self.black_back_row = [
+            Rook('BLACK'), Knight('BLACK'), Bishop('BLACK'), 
+            King('BLACK'), Queen('BLACK'), Bishop('BLACK'), 
+            Knight('BLACK'), Rook('BLACK')
+        ]
 
-        self.__positions__[0][0] = Rook('WHITE')
-        self.__positions__[0][1] = Knight('WHITE')
-        self.__positions__[0][2] = Bishop('WHITE')
-        self.__positions__[0][3] = King('WHITE')
-        self.__positions__[0][4] = Queen('WHITE')
-        self.__positions__[0][5] = Bishop('WHITE')
-        self.__positions__[0][6] = Knight('WHITE')
-        self.__positions__[0][7] = Rook('WHITE')
+    def initialize(self, board: Board):
+        for col, piece in enumerate(self.white_back_row):
+            board.place_piece(piece, 0, col)
 
         for col in range(8):
-            self.__positions__[1][col] = Pawn('WHITE')
-            self.__positions__[6][col] = Pawn('BLACK')
+            board.place_piece(Pawn('WHITE'), 1, col)
 
-        self.__positions__[7][0] = Rook('BLACK')
-        self.__positions__[7][1] = Knight('BLACK')
-        self.__positions__[7][2] = Bishop('BLACK')
-        self.__positions__[7][3] = King('BLACK')
-        self.__positions__[7][4] = Queen('BLACK')
-        self.__positions__[7][5] = Bishop('BLACK')
-        self.__positions__[7][6] = Knight('BLACK')
-        self.__positions__[7][7] = Rook('BLACK')
+        for col in range(8):
+            board.place_piece(Pawn('BLACK'), 6, col)
+
+        for col, piece in enumerate(self.black_back_row):
+            board.place_piece(piece, 7, col)

@@ -1,8 +1,10 @@
-from game.board import Board
+from game.board import Board, BoardInitializer
 
 class Chess:
     def __init__(self):
         self.__board__ = Board()
+        initializer = BoardInitializer()
+        initializer.initialize(self.__board__)
         self.__turn__ = 'WHITE'
         ...
     
