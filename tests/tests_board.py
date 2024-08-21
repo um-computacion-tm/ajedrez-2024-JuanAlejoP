@@ -38,6 +38,10 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(piece.__class__.__name__, 'Rook')
         self.assertEqual(piece.__colour__, 'WHITE')
 
+    def test_within_bounds(self):
+        ...
+
+
 
 if __name__ == '__main__':
     unittest.main()
