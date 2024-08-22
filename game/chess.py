@@ -1,29 +1,31 @@
 from game.board import Board, BoardInitializer
 
 class Chess:
-    def __init__(self):
+    def __init__(self, board_initializer=None):
         self.__board__ = Board()
-        initializer = BoardInitializer()
-        initializer.initialize(self.__board__)
+        if board_initializer is None:
+            board_initializer = BoardInitializer()
+        board_initializer.initialize(self.__board__)
         self.__turn__ = 'WHITE'
-        ...
     
-    def move(self, from_row, from_col, to_row, to_col):
-        piece = self.__board__.get_piece(from_row, from_col)
-        if piece is None:
-             raise ValueError('No hay pieza en esa posición.')
-        
-        self.__board__.__positions__[to_row][to_col] = piece
-        self.__board__.__positions__[from_row][from_col] = None
-
-        self.change_turn()
+    @property
+    def board(self):
+        return self.__board__
 
     @property
     def turn(self):
          return self.__turn__
 
+    def move(self, from_row, from_col, to_row, to_col):
+        piece = self.__board__.get_piece(from_row, from_col)
+        if piece is None:
+            raise ValueError('No hay pieza en esa posición.')
+        
+        if not piece.valid_move(from_row, from_col, to_row, to_col):
+            raise ValueError('Movimiento inválido para esta pieza.')
+
+        self.__board__.move_piece(from_row, from_col, to_row, to_col)
+        self.change_turn()
+
     def change_turn(self):
-            if self.__turn__ == 'WHITE':
-                self.__turn__ = 'BLACK'
-            else:
-                 self.__turn__ = 'WHITE'
+        self.__turn__ = 'BLACK' if self.__turn__ == 'WHITE' else 'WHITE'
