@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2024-08-21
+
+### Added
+
+- Added tests for the `Piece` class.
+- Added `valid_move` method to the `Piece` base class for its subclasses.
+
+### Changed
+
+- Moved the `within_bounds` method from `Piece` to `Board`, relocating its tests accordingly.
+- Refactored the `Piece` class to be abstract, adjusting its attributes and methods to align with this.
+- Modified the `Board` class to adhere to SOLID principles, adding a `place_piece` method to handle piece placement on the board.
+- Shifted the responsibility of placing pieces during board initialization to a new `BoardInitializer` class, further aligning with SOLID principles. This clarified the responsibilities within `Board`.
+- Made changes to `Chess` due to the refactoring in `Board`.
+
+### Removed
+
+- Deleted several piece tests to rewrite them.
+
 ## [0.1.5] - 2024-08-20
 
 ### Added
