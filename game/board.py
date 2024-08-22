@@ -12,6 +12,26 @@ class Board:
 
     def within_bounds(self, row, col):
         return 0 <= row < 8 and 0 <= col < 8
+
+    def move_piece(self, from_row, from_col, to_row, to_col):
+        piece = self.get_piece(from_row, from_col)
+        if not self.within_bounds(to_row, to_col):
+            raise ValueError('Movimiento fuera de los límites.')
+        
+        self.place_piece(piece, to_row, to_col)
+        self.__positions__[from_row][from_col] = None
+
+    def __str__(self):
+        board_str = ""
+        for row in self.__positions__:
+            row_str = "|"
+            for piece in row:
+                if piece is None:
+                    row_str += "   |"
+                else:
+                    row_str += f" {piece} |"
+            board_str += row_str + "\n" + "-" * 33 + "\n"
+        return board_str
     
 class BoardInitializer:
     def __init__(self):
