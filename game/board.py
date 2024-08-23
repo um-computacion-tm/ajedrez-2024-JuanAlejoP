@@ -22,15 +22,20 @@ class Board:
         self.__positions__[from_row][from_col] = None
 
     def __str__(self):
-        board_str = ''
-        for row in self.__positions__:
-            row_str = '|'
+        board_str = "    a   b   c   d   e   f   g   h  \n"
+        board_str += "  " + "-" * 33 + "\n"
+        for i, row in enumerate((self.__positions__)):
+            #Agregando 'Reversed' a self.__positions__ en la línea 27
+            #podemos voltear las piezas sin voltear el tablero.
+            row_str = f"{i+1} |"
             for piece in row:
                 if piece is None:
-                    row_str += '   |'
+                    row_str += "   |"
                 else:
-                    row_str += f' {piece.symbol()} |'
-            board_str += row_str + '\n' + '-' * 33 + '\n'
+                    row_str += f" {piece.symbol()} |"
+            board_str += row_str + f" {i+1}\n"
+            board_str += "  " + "-" * 33 + "\n"
+        board_str += "    a   b   c   d   e   f   g   h  \n"
         return board_str
    
 class BoardInitializer:
