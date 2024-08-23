@@ -11,9 +11,8 @@ class ConsoleIO:
     def algebraic_to_index(self, pos):
         col_map = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7}
         col = col_map[pos[0]]
-        row = int(pos[1]) - 1  # Ajusta la fila para que coincida correctamente
+        row = int(pos[1]) - 1
         return row, col
-
 
     def output_turn(self, turn):
         print(f'Turno: {turn}')
