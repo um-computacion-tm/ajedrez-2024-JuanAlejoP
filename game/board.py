@@ -20,7 +20,7 @@ class Board:
         piece = self.get_piece(from_row, from_col)
         if not self.within_bounds(to_row, to_col):
             raise ValueError('Movimiento fuera de los límites.')
-        
+
         if piece is None:
             raise ValueError('No hay pieza en esa posición.')
 
@@ -47,7 +47,7 @@ class Board:
             board_str += "  " + "-" * 33 + "\n"
         board_str += "    a   b   c   d   e   f   g   h  \n"
         return board_str
-   
+
 class BoardInitializer:
     def __init__(self):
         self.white_back_row = [
