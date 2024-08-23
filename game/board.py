@@ -40,16 +40,14 @@ class Board:
         return False
 
     def move_piece(self, from_row, from_col, to_row, to_col):
-        piece = self.get_piece(from_row, from_col)
-
         if not self.within_bounds(to_row, to_col):
             raise ValueError('Movimiento fuera de los límites.')
 
+        piece = self.get_piece(from_row, from_col)
         if piece is None:
             raise ValueError('No hay pieza en esa posición.')
 
         target_piece = self.get_piece(to_row, to_col)
-
         if target_piece and target_piece.colour == piece.colour:
             raise ValueError('No puedes capturar una pieza del mismo color.')
 

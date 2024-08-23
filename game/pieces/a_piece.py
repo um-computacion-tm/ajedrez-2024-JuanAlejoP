@@ -6,12 +6,12 @@ class Piece(ABC):
 
     @property
     def colour(self):
-        return self.__colour__        
+        return self.__colour__
 
     @abstractmethod
-    def valid_move(self, from_row, from_col, to_row, to_col):
+    def move(self, from_row, from_col, to_row, to_col):
         pass
-    
+
     @abstractmethod
     def symbol(self):
         pass

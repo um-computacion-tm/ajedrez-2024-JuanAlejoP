@@ -14,13 +14,13 @@ class Chess:
 
     @property
     def turn(self):
-         return self.__turn__
+        return self.__turn__
 
     def move(self, from_row, from_col, to_row, to_col):
         piece = self.__board__.get_piece(from_row, from_col)
         if piece is None:
             raise ValueError('No hay pieza en esa posición.')
-        
+
         if not self.is_valid_move(piece, from_row, from_col, to_row, to_col):
             raise ValueError('Movimiento inválido para esta pieza.')
 
@@ -28,7 +28,7 @@ class Chess:
         self.change_turn()
 
     def is_valid_move(self, piece, from_row, from_col, to_row, to_col):
-        if not piece.valid_move(from_row, from_col, to_row, to_col):
+        if not piece.move(from_row, from_col, to_row, to_col):
             return False
         if isinstance(piece, Pawn):
             return self.is_valid_pawn_move(piece, from_row, from_col, to_row, to_col)
