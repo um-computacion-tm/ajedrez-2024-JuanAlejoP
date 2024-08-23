@@ -4,31 +4,58 @@ class Board:
     def __init__(self):
         self.__positions__ = [[None for _ in range(8)] for _ in range(8)]
 
-    def place_piece(self, piece: Piece, row, col):
-        self.__positions__[row][col] = piece
-
     def get_piece(self, row, col):
         return self.__positions__[row][col]
 
-    def within_bounds(self, row, col):
-        return 0 <= row < 8 and 0 <= col < 8
+    def place_piece(self, piece: Piece, row, col):
+        self.__positions__[row][col] = piece
 
     def is_occupied(self, row, col):
         return self.get_piece(row, col) is not None
 
+    def within_bounds(self, row, col):
+        return 0 <= row < 8 and 0 <= col < 8
+
+    def is_path_blocked(self, from_row, from_col, to_row, to_col):
+        if from_row == to_row:  # Movimiento horizontal
+            step = 1 if from_col < to_col else -1
+            for col in range(from_col + step, to_col, step):
+                if self.is_occupied(from_row, col):
+                    return True
+
+        elif from_col == to_col:  # Movimiento vertical
+            step = 1 if from_row < to_row else -1
+            for row in range(from_row + step, to_row, step):
+                if self.is_occupied(row, from_col):
+                    return True
+
+        elif abs(from_row - to_row) == abs(from_col - to_col):  # Movimiento diagonal
+            row_step = 1 if from_row < to_row else -1
+            col_step = 1 if from_col < to_col else -1
+            for row, col in zip(range(from_row + row_step, to_row, row_step), 
+                                range(from_col + col_step, to_col, col_step)):
+                if self.is_occupied(row, col):
+                    return True
+
+        return False
+
     def move_piece(self, from_row, from_col, to_row, to_col):
         piece = self.get_piece(from_row, from_col)
+
         if not self.within_bounds(to_row, to_col):
             raise ValueError('Movimiento fuera de los límites.')
 
         if piece is None:
             raise ValueError('No hay pieza en esa posición.')
 
-        if not piece.valid_move(from_row, from_col, to_row, to_col):
-            raise ValueError('Movimiento inválido para esta pieza.')
+        target_piece = self.get_piece(to_row, to_col)
 
-        if self.is_occupied(to_row, to_col) and (to_row != from_row + 1):
-            raise ValueError('Casilla ocupada.')
+        if target_piece and target_piece.colour == piece.colour:
+            raise ValueError('No puedes capturar una pieza del mismo color.')
+
+        # Evitar que las piezas salten sobre otras (excepto el caballo)
+        if not isinstance(piece, Knight) and self.is_path_blocked(from_row, from_col, to_row, to_col):
+            raise ValueError('El camino está bloqueado por otra pieza.')
 
         self.place_piece(piece, to_row, to_col)
         self.__positions__[from_row][from_col] = None
