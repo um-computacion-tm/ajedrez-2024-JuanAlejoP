@@ -13,20 +13,30 @@ class Board:
     def within_bounds(self, row, col):
         return 0 <= row < 8 and 0 <= col < 8
 
+    def is_occupied(self, row, col):
+        return self.get_piece(row, col) is not None
+
     def move_piece(self, from_row, from_col, to_row, to_col):
         piece = self.get_piece(from_row, from_col)
         if not self.within_bounds(to_row, to_col):
             raise ValueError('Movimiento fuera de los límites.')
         
+        if piece is None:
+            raise ValueError('No hay pieza en esa posición.')
+
+        if not piece.valid_move(from_row, from_col, to_row, to_col):
+            raise ValueError('Movimiento inválido para esta pieza.')
+
+        if self.is_occupied(to_row, to_col) and (to_row != from_row + 1):
+            raise ValueError('Casilla ocupada.')
+
         self.place_piece(piece, to_row, to_col)
         self.__positions__[from_row][from_col] = None
 
     def __str__(self):
         board_str = "    a   b   c   d   e   f   g   h  \n"
         board_str += "  " + "-" * 33 + "\n"
-        for i, row in enumerate((self.__positions__)):
-            #Agregando 'Reversed' a self.__positions__ en la línea 27
-            #podemos voltear las piezas sin voltear el tablero.
+        for i, row in enumerate(self.__positions__):
             row_str = f"{i+1} |"
             for piece in row:
                 if piece is None:

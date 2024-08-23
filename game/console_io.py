@@ -1,7 +1,7 @@
 class ConsoleIO:
     def input_move(self):
-        from_pos = input('Mover pieza desde (ej. a2): ').strip().lower()
-        to_pos = input('A casilla (ej. a3): ').strip().lower()
+        from_pos = input('Mover pieza desde: ').strip().lower()
+        to_pos = input('Hacia casilla: ').strip().lower()
         
         from_row, from_col = self.algebraic_to_index(from_pos)
         to_row, to_col = self.algebraic_to_index(to_pos)
