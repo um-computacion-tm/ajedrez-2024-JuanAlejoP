@@ -22,17 +22,17 @@ class Board:
         self.__positions__[from_row][from_col] = None
 
     def __str__(self):
-        board_str = ""
+        board_str = ''
         for row in self.__positions__:
-            row_str = "|"
+            row_str = '|'
             for piece in row:
                 if piece is None:
-                    row_str += "   |"
+                    row_str += '   |'
                 else:
-                    row_str += f" {piece} |"
-            board_str += row_str + "\n" + "-" * 33 + "\n"
+                    row_str += f' {piece.symbol()} |'
+            board_str += row_str + '\n' + '-' * 33 + '\n'
         return board_str
-    
+   
 class BoardInitializer:
     def __init__(self):
         self.white_back_row = [
