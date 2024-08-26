@@ -33,14 +33,34 @@ class TestBoard(unittest.TestCase):
         self.assertIsInstance(self.board.get_piece(7, 5), Bishop)
         self.assertIsInstance(self.board.get_piece(7, 6), Knight)
         self.assertIsInstance(self.board.get_piece(7, 7), Rook)
-   
+
     def test_get_piece(self):
         piece = self.board.get_piece(0, 0)
         self.assertIsInstance(piece, Rook)
         self.assertEqual(piece.colour, 'WHITE')
 
     def test_within_bounds(self):
-        ...
+        self.assertTrue(self.board.within_bounds(0, 0))
+        self.assertTrue(self.board.within_bounds(7, 7))
+        self.assertFalse(self.board.within_bounds(-1, 0))
+        self.assertFalse(self.board.within_bounds(0, 8))
+
+    def test_is_occupied(self):
+        self.assertTrue(self.board.is_occupied(0, 0))
+        self.assertFalse(self.board.is_occupied(4, 4))
+
+    def test_is_path_blocked(self):
+        self.assertTrue(self.board.is_path_blocked(0, 0, 0, 7))
+        self.assertTrue(self.board.is_path_blocked(7, 0, 7, 7))
+        self.assertFalse(self.board.is_path_blocked(1, 0, 3, 0))
+        self.assertFalse(self.board.is_path_blocked(4, 4, 4, 4))
+
+    def test_move_piece(self):
+        self.board.move_piece(1, 0, 3, 0)
+        self.assertIsInstance(self.board.get_piece(3, 0), Pawn)
+        self.assertIsNone(self.board.get_piece(1, 0))
+
+
 
 
 
