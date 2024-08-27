@@ -18,11 +18,16 @@ class Chess:
 
     def move(self, from_row, from_col, to_row, to_col):
         piece = self.__board__.get_piece(from_row, from_col)
+        target_piece = self.__board__.get_piece(to_row, to_col)
+
         if piece is None:
             raise ValueError('No hay pieza en esa posición.')
-
         if not self.is_valid_move(piece, from_row, from_col, to_row, to_col):
             raise ValueError('Movimiento inválido para esta pieza.')
+        if not isinstance(piece, Knight) and self.__board__.is_path_blocked(from_row, from_col, to_row, to_col):
+            raise ValueError('El camino está bloqueado por otra pieza.')
+        if target_piece and target_piece.colour == piece.colour:
+            raise ValueError('No puedes capturar una pieza del mismo color.')
 
         self.__board__.move_piece(from_row, from_col, to_row, to_col)
         self.change_turn()
@@ -36,6 +41,7 @@ class Chess:
 
     def is_valid_pawn_move(self, pawn, from_row, from_col, to_row, to_col):
         direction = 1 if pawn.colour == 'WHITE' else -1
+        
         if from_col == to_col:
             if to_row == from_row + direction and not self.__board__.is_occupied(to_row, to_col):
                 return True
