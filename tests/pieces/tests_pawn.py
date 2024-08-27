@@ -7,6 +7,12 @@ class TestPawn(unittest.TestCase):
         self.white_pawn = Pawn('WHITE')
         self.black_pawn = Pawn('BLACK')
 
+    def test_pawn_symbols(self):
+        white_pawn = Pawn('WHITE')
+        black_pawn = Pawn('BLACK')
+        self.assertEqual(white_pawn.symbol(), '♙')
+        self.assertEqual(black_pawn.symbol(), '♟')
+
     def test_pawn_initial_double_step(self):
         self.assertTrue(self.white_pawn.move(1, 0, 3, 0))
         self.assertTrue(self.black_pawn.move(6, 0, 4, 0))
