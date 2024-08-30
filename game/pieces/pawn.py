@@ -10,6 +10,4 @@ class Pawn(Piece):
         if from_col == to_col:
             if to_row == from_row + direction or (from_row in [1, 6] and to_row == from_row + 2 * direction):
                 return True
-        elif abs(from_col - to_col) == 1 and to_row == from_row + direction:
-            return True
         return False

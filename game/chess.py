@@ -33,10 +33,10 @@ class Chess:
         self.change_turn()
 
     def is_valid_move(self, piece, from_row, from_col, to_row, to_col):
-        if not piece.move(from_row, from_col, to_row, to_col):
-            return False
         if isinstance(piece, Pawn):
             return self.is_valid_pawn_move(piece, from_row, from_col, to_row, to_col)
+        if not piece.move(from_row, from_col, to_row, to_col):
+            return False
         return True
 
     def is_valid_pawn_move(self, pawn, from_row, from_col, to_row, to_col):
