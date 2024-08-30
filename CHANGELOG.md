@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4] - 2028-08-30
+
+### Added
+
+- Added `is_knight_move` method to the `Knight` class.
+
+### Changed
+
+- Refactored knights movement logic into separated methods to solve CodeClimate issues.
+
 ## [0.2.3] - 2024-08-30
 
 ### Changed
