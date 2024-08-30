@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2024-08-29
+
+### Added
+
+- Added `is_occupied` method to the `Board` class to check if a square is occupied.
+- Added `is_path_blocked` method to the `Board` class to verify if the path a piece wants to traverse is clear or blocked, validating the move accordingly.
+- Added `move_piece` method to the `Board` class to ensure pieces do not move off the board and, if valid, move the piece.
+- Added `__str__` method to handle the board's terminal representation.
+- Added board as a property for the `Chess` class.
+- Added `is_valid_move` method to the `Chess` class to validate moves based on the rules for each piece through their `move` methods, or `is_valid_pawn_move` for pawns.
+- Added `is_valid_pawn_move` to the `Chess` class to validate pawn movements and handle captures correctly.
+- Added `ConsoleIO` and `Game` classes.
+- Added `colours` module and `ColourScheme` class for future UI customization options.
+- Added `symbol` method to return the Unicode representation of pieces based on their color (white or black).
+- Added tests for all pieces, `board`, `chess`, `client`, and `console_io` modules.
+
+### Changed
+
+- Refactored all code to better adhere to SOLID principles.
+- Added validation for invalid moves based on the piece type using the `is_valid_move` method.
+- Introduced a check to prevent pieces, except knights, from moving if their path is blocked by another piece using the `is_path_blocked` method.
+- Added validation to prevent capturing a piece of the same color.
+- Refactored movement logic by delegating position updates to the `move_piece` method in the `Board` class.
+- Refactored chess code for greater clarity and efficiency.
+- Separated input/output logic into a new `ConsoleIO` class, adhering to SOLID principles.
+- Refactored the game loop into a `Game` class, improving maintainability and facilitating future extensions.
+- Updated the `Chess` class usage in the client to align with the new `Game` and `ConsoleIO` structure.
+- Adjusted exception handling and user interaction to be managed by `ConsoleIO`, simplifying the main game logic.
+- Updated `Piece` class by changing `valid_move` to `move` to better reflect movement logic and added `symbol` for piece representation.
+- Refactored all pieces by replacing `valid_move` method with a `move` method for handling movement.
+
 ## [0.1.6] - 2024-08-21
 
 ### Added
@@ -30,7 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added a `valid_move` method for the `Pawn`, `Bishop`, `King`, and `Queen` pieces, verifying their characteristic movement capabilities.
+- Added `valid_move` method for the `Pawn`, `Bishop`, `King`, and `Queen` pieces, verifying their characteristic movement capabilities.
 - Added unit tests for the `King` and `Queen` pieces.
 
 ### Changed
@@ -62,7 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- The positions of the Kings and Queens were fixed, as they were previously reversed.
+- Fixed the positions of the Kings and Queens, which were previously reversed.
 
 ## [0.1.2] - 2024-08-16
 
@@ -106,10 +137,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `.gitignore`.
 - Added `CHANGELOG.md`.
 - Added `README.md`.
-
-## [0.0.0] - yyyy-mm-dd
-
-### Added
-### Changed
-### Removed
-### Fixes
