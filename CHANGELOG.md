@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2024-08-30
+
+### Changed
+
+- Refactored pieces movement logic to its previous state, since more CodeClimate issues were found in version [0.2.2].
+
+### Removed
+
+- Removed the `MovementValidator` class.
+
 ## [0.2.2] - 2024-08-30
 
 ### Added
