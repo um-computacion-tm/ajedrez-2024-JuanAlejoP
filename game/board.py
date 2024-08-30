@@ -17,26 +17,35 @@ class Board:
         return 0 <= row < 8 and 0 <= col < 8
 
     def is_path_blocked(self, from_row, from_col, to_row, to_col):
-        if from_row == to_row:  # Movimiento horizontal
-            step = 1 if from_col < to_col else -1
-            for col in range(from_col + step, to_col, step):
-                if self.is_occupied(from_row, col):
-                    return True
+        if from_row == to_row:
+            return self.horizontal_path_blocked(from_row, from_col, to_col)
+        elif from_col == to_col:
+            return self.vertical_path_blocked(from_row, from_col, to_row)
+        elif abs(from_row - to_row) == abs(from_col - to_col):
+            return self.diagonal_path_blocked(from_row, from_col, to_row, to_col)
+        return False
 
-        elif from_col == to_col:  # Movimiento vertical
-            step = 1 if from_row < to_row else -1
-            for row in range(from_row + step, to_row, step):
-                if self.is_occupied(row, from_col):
-                    return True
+    def horizontal_path_blocked(self, row, from_col, to_col):
+        step = 1 if from_col < to_col else -1
+        for col in range(from_col + step, to_col, step):
+            if self.is_occupied(row, col):
+                return True
+        return False
 
-        elif abs(from_row - to_row) == abs(from_col - to_col):  # Movimiento diagonal
-            row_step = 1 if from_row < to_row else -1
-            col_step = 1 if from_col < to_col else -1
-            for row, col in zip(range(from_row + row_step, to_row, row_step), 
-                                range(from_col + col_step, to_col, col_step)):
-                if self.is_occupied(row, col):
-                    return True
+    def vertical_path_blocked(self, from_row, col, to_row):
+        step = 1 if from_row < to_row else -1
+        for row in range(from_row + step, to_row, step):
+            if self.is_occupied(row, col):
+                return True
+        return False
 
+    def diagonal_path_blocked(self, from_row, from_col, to_row, to_col):
+        row_step = 1 if from_row < to_row else -1
+        col_step = 1 if from_col < to_col else -1
+        for row, col in zip(range(from_row + row_step, to_row, row_step), 
+                            range(from_col + col_step, to_col, col_step)):
+            if self.is_occupied(row, col):
+                return True
         return False
 
     def move_piece(self, from_row, from_col, to_row, to_col):
