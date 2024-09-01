@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.5] - 2024-09-01
+
+### Changed
+
+- Adjusted piece symbol handling to return a single symbol, removing color dependency.
+- Refactored the `Board` class to display pieces with their colored symbols using the `coloured_symbol` method.
+- Updated `ConsoleIO` and `Game` classes to handle color customization and board output with the new symbol handling.
+- Removed the `colours` module and `ColourScheme` class as part of the refactoring.
+- Refactored tests to accommodate the changes in symbol representation for pieces.
+- Ensured all pieces and the board use the `coloured_symbol` method for consistent terminal representation.
+
+### Removed
+
+- Removed the `colours` module and `ColourScheme` class.
+
+### Fixed
+
+- Fixed symbol representation issues to ensure all pieces display correctly.
+
 ## [0.2.4] - 2028-08-30
 
 ### Added

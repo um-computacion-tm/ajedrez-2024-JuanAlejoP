@@ -10,7 +10,7 @@ class TestKnight(unittest.TestCase):
     def test_knight_symbols(self):
         white_knight = Knight('WHITE')
         black_knight = Knight('BLACK')
-        self.assertEqual(white_knight.symbol(), '♘')
+        self.assertEqual(white_knight.symbol(), '♞')
         self.assertEqual(black_knight.symbol(), '♞')
 
     def test_l_shape_move(self):

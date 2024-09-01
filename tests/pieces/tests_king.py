@@ -10,7 +10,7 @@ class TestKing(unittest.TestCase):
     def test_king_symbols(self):
         white_king = King('WHITE')
         black_king = King('BLACK')
-        self.assertEqual(white_king.symbol(), '♔')
+        self.assertEqual(white_king.symbol(), '♚')
         self.assertEqual(black_king.symbol(), '♚')
 
     def test_single_square_move(self):

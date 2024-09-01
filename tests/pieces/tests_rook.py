@@ -10,7 +10,7 @@ class TestRook(unittest.TestCase):
     def test_rook_symbols(self):
         white_rook = Rook('WHITE')
         black_rook = Rook('BLACK')
-        self.assertEqual(white_rook.symbol(), '♖')
+        self.assertEqual(white_rook.symbol(), '♜')
         self.assertEqual(black_rook.symbol(), '♜')
 
     def test_horizontal_move(self):

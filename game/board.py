@@ -42,7 +42,7 @@ class Board:
     def diagonal_path_blocked(self, from_row, from_col, to_row, to_col):
         row_step = 1 if from_row < to_row else -1
         col_step = 1 if from_col < to_col else -1
-        for row, col in zip(range(from_row + row_step, to_row, row_step), 
+        for row, col in zip(range(from_row + row_step, to_row, row_step),
                             range(from_col + col_step, to_col, col_step)):
             if self.is_occupied(row, col):
                 return True
@@ -66,7 +66,7 @@ class Board:
                 if piece is None:
                     row_str += "   |"
                 else:
-                    row_str += f" {piece.symbol()} |"
+                    row_str += f" {piece.coloured_symbol()} |"
             board_str += row_str + f" {i+1}\n"
             board_str += "  " + "-" * 33 + "\n"
         board_str += "    a   b   c   d   e   f   g   h  \n"

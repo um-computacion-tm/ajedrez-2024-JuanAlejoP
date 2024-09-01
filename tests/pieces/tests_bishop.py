@@ -10,7 +10,7 @@ class TestBishop(unittest.TestCase):
     def test_bishop_symbols(self):
         white_bishop = Bishop('WHITE')
         black_bishop = Bishop('BLACK')
-        self.assertEqual(white_bishop.symbol(), '♗')
+        self.assertEqual(white_bishop.symbol(), '♝')
         self.assertEqual(black_bishop.symbol(), '♝')
 
     def test_diagonal_move(self):

@@ -10,7 +10,7 @@ class TestQueen(unittest.TestCase):
     def test_queen_symbols(self):
         white_queen = Queen('WHITE')
         black_queen = Queen('BLACK')
-        self.assertEqual(white_queen.symbol(), '♕')
+        self.assertEqual(white_queen.symbol(), '♛')
         self.assertEqual(black_queen.symbol(), '♛')
 
     def test_horizontal_vertical_move(self):

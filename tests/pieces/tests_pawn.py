@@ -10,7 +10,7 @@ class TestPawn(unittest.TestCase):
     def test_pawn_symbols(self):
         white_pawn = Pawn('WHITE')
         black_pawn = Pawn('BLACK')
-        self.assertEqual(white_pawn.symbol(), '♙')
+        self.assertEqual(white_pawn.symbol(), '♟')
         self.assertEqual(black_pawn.symbol(), '♟')
 
     def test_pawn_initial_double_step(self):

@@ -1,4 +1,7 @@
+from colorama import Fore
+
 class ConsoleIO:
+    
     def input_move(self):
         from_pos = input('Mover pieza desde: ').strip().lower()
         to_pos = input('Hacia casilla: ').strip().lower()
@@ -22,3 +25,15 @@ class ConsoleIO:
 
     def output_board(self, board):
         print(board)
+
+    def choose_colour_scheme(self):
+        choice = input("Elige un esquema de color: ")
+
+        if choice == "1":
+            return Fore.WHITE, Fore.BLACK
+        elif choice == "2":
+            return Fore.BLUE, Fore.RED
+        elif choice == "3":
+            return Fore.YELLOW, Fore.MAGENTA
+        else:
+            return None
