@@ -26,6 +26,8 @@ class Chess:
             raise ValueError('Movimiento inválido para esta pieza.')
         if not isinstance(piece, Knight) and self.__board__.is_path_blocked(from_row, from_col, to_row, to_col):
             raise ValueError('El camino está bloqueado por otra pieza.')
+        if piece.colour != self.__turn__:
+            raise ValueError(f'Es turno de las {self.turn}.')
         if target_piece and target_piece.colour == piece.colour:
             raise ValueError('No puedes capturar una pieza del mismo color.')
 
