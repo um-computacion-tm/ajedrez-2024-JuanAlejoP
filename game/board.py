@@ -75,13 +75,13 @@ class Board:
 class BoardInitializer:
     def __init__(self):
         self.white_back_row = [
-            Rook('WHITE'), Knight('WHITE'), Bishop('WHITE'), 
-            King('WHITE'), Queen('WHITE'), Bishop('WHITE'), 
+            Rook('WHITE'), Knight('WHITE'), Bishop('WHITE'),
+            Queen('WHITE'), King('WHITE'), Bishop('WHITE'),
             Knight('WHITE'), Rook('WHITE')
         ]
         self.black_back_row = [
-            Rook('BLACK'), Knight('BLACK'), Bishop('BLACK'), 
-            King('BLACK'), Queen('BLACK'), Bishop('BLACK'), 
+            Rook('BLACK'), Knight('BLACK'), Bishop('BLACK'),
+            Queen('BLACK'), King('BLACK'), Bishop('BLACK'),
             Knight('BLACK'), Rook('BLACK')
         ]
 

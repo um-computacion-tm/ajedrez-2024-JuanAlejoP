@@ -12,8 +12,8 @@ class TestBoard(unittest.TestCase):
         self.assertIsInstance(self.board.get_piece(0, 0), Rook)
         self.assertIsInstance(self.board.get_piece(0, 1), Knight)
         self.assertIsInstance(self.board.get_piece(0, 2), Bishop)
-        self.assertIsInstance(self.board.get_piece(0, 3), King)
-        self.assertIsInstance(self.board.get_piece(0, 4), Queen)
+        self.assertIsInstance(self.board.get_piece(0, 3), Queen)  # Queen should be here
+        self.assertIsInstance(self.board.get_piece(0, 4), King)   # King should be here
         self.assertIsInstance(self.board.get_piece(0, 5), Bishop)
         self.assertIsInstance(self.board.get_piece(0, 6), Knight)
         self.assertIsInstance(self.board.get_piece(0, 7), Rook)
@@ -28,8 +28,8 @@ class TestBoard(unittest.TestCase):
         self.assertIsInstance(self.board.get_piece(7, 0), Rook)
         self.assertIsInstance(self.board.get_piece(7, 1), Knight)
         self.assertIsInstance(self.board.get_piece(7, 2), Bishop)
-        self.assertIsInstance(self.board.get_piece(7, 3), King)
-        self.assertIsInstance(self.board.get_piece(7, 4), Queen)
+        self.assertIsInstance(self.board.get_piece(7, 3), Queen)  # Queen should be here
+        self.assertIsInstance(self.board.get_piece(7, 4), King)   # King should be here
         self.assertIsInstance(self.board.get_piece(7, 5), Bishop)
         self.assertIsInstance(self.board.get_piece(7, 6), Knight)
         self.assertIsInstance(self.board.get_piece(7, 7), Rook)
