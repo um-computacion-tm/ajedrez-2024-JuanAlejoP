@@ -43,6 +43,10 @@ class Game:
             if choice == "1":
                 while True:
                     self.play()
+                    if self.chess.game_over:
+                        break
+                self.io_handler.output_board(self.chess.board)
+                break
             elif choice == "2":
                 self.configure_colours()
             elif choice == "3":

@@ -7,7 +7,8 @@ class Chess:
             board_initializer = BoardInitializer()
         board_initializer.initialize(self.__board__)
         self.__turn__ = 'WHITE'
-    
+        self.game_over = False
+
     @property
     def board(self):
         return self.__board__
@@ -31,8 +32,17 @@ class Chess:
         if target_piece and target_piece.colour == piece.colour:
             raise ValueError('No puedes capturar una pieza del mismo color.')
 
+#REVISAR
         self.__board__.move_piece(from_row, from_col, to_row, to_col)
-        self.change_turn()
+        if isinstance(target_piece, King):
+            self.end_game(f'¡El rey {target_piece.colour} ha sido capturado! {self.__turn__} gana.')
+        elif self.is_checkmate():
+            self.end_game(f'¡Jaque mate! {self.__turn__} gana.')
+        elif self.is_stalemate():
+            self.end_game('¡Empate por ahogado!')
+        else:
+            self.change_turn()
+#REVISAR
 
     def is_valid_move(self, piece, from_row, from_col, to_row, to_col):
         if isinstance(piece, Pawn):
@@ -56,3 +66,18 @@ class Chess:
 
     def change_turn(self):
         self.__turn__ = 'BLACK' if self.__turn__ == 'WHITE' else 'WHITE'
+
+#REVISAR
+    def end_game(self, message):
+        self.game_over = True
+        print(message)
+
+    def is_checkmate(self):
+        return False
+
+    def is_stalemate(self):
+        return False
+
+    def is_draw(self):
+        return False
+#REVISAR
