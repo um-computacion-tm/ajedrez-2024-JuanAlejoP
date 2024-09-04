@@ -20,6 +20,7 @@ class Game:
             else:
                 from_row, from_col, to_row, to_col = move_input
                 self.chess.move(from_row, from_col, to_row, to_col)
+
         except Exception as e:
             self.io_handler.output_error(str(e))
 

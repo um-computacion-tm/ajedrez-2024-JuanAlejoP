@@ -1,14 +1,14 @@
 from colorama import Fore
 
 class ConsoleIO:
-    
+
     def input_move(self):
         from_pos = input('Mover pieza desde: ').strip().lower()
-
         if from_pos == 'empate':
             return 'empate', None, None, None
-        
         to_pos = input('Hacia casilla: ').strip().lower()
+        if not from_pos or not to_pos:
+            raise ValueError("No ingresaste un movimiento.")
 
         from_row, from_col = self.algebraic_to_index(from_pos)
         to_row, to_col = self.algebraic_to_index(to_pos)
