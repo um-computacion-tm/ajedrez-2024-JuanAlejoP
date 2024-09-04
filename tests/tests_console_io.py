@@ -21,18 +21,20 @@ class TestConsoleIO(unittest.TestCase):
     @patch('builtins.print')
     def test_output_turn(self, mock_print):
         self.console_io.output_turn('Blancas')
-        mock_print.assert_called_once_with('Turno: Blancas')
+        mock_print.assert_called_once_with('TURNO: Blancas')
 
     @patch('builtins.print')
     def test_output_error(self, mock_print):
         self.console_io.output_error('Movimiento inválido')
-        mock_print.assert_called_once_with('ERROR!', 'Movimiento inválido')
+        mock_print.assert_called_once_with(f'\n¡ERROR! Movimiento inválido')
 
     @patch('builtins.print')
     def test_output_board(self, mock_print):
         board = 'tablero de ejemplo'
         self.console_io.output_board(board)
         mock_print.assert_called_once_with(board)
+
+
 
 if __name__ == '__main__':
     unittest.main()
