@@ -8,13 +8,13 @@ class TestChess(unittest.TestCase):
         self.chess = Chess()
 
     def test_initial_turn(self):
-        self.assertEqual(self.chess.turn, 'WHITE')
+        self.assertEqual(self.chess.turn, 'BLANCAS')
 
     def test_move(self):
         self.chess.move(1, 0, 3, 0)
         self.assertIsInstance(self.chess.board.get_piece(3, 0), Pawn)
         self.assertIsNone(self.chess.board.get_piece(1, 0))
-        self.assertEqual(self.chess.turn, 'BLACK')
+        self.assertEqual(self.chess.turn, 'NEGRAS')
 
     def test_invalid_move_empty_square(self):
         with self.assertRaises(ValueError):
@@ -29,7 +29,7 @@ class TestChess(unittest.TestCase):
         self.chess.move(6, 1, 4, 1)
         self.chess.move(3, 0, 4, 1)
         self.assertIsInstance(self.chess.board.get_piece(4, 1), Pawn)
-        self.assertEqual(self.chess.board.get_piece(4, 1).colour, 'WHITE')
+        self.assertEqual(self.chess.board.get_piece(4, 1).colour, 'BLANCAS')
 
     def test_invalid_capture_same_color(self):
         with self.assertRaises(ValueError):
@@ -45,11 +45,11 @@ class TestChess(unittest.TestCase):
         self.assertTrue(self.chess.is_valid_pawn_move(self.chess.board.get_piece(3, 0), 3, 0, 4, 1))
 
     def test_turn_change(self):
-        self.assertEqual(self.chess.turn, 'WHITE')
+        self.assertEqual(self.chess.turn, 'BLANCAS')
         self.chess.change_turn()
-        self.assertEqual(self.chess.turn, 'BLACK')
+        self.assertEqual(self.chess.turn, 'NEGRAS')
         self.chess.change_turn()
-        self.assertEqual(self.chess.turn, 'WHITE')
+        self.assertEqual(self.chess.turn, 'BLANCAS')
 
 
 

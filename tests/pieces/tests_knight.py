@@ -4,12 +4,12 @@ from game.pieces import Knight
 class TestKnight(unittest.TestCase):
 
     def setUp(self):
-        self.white_knight = Knight('WHITE')
-        self.black_knight = Knight('BLACK')
+        self.white_knight = Knight('BLANCAS')
+        self.black_knight = Knight('NEGRAS')
 
     def test_knight_symbols(self):
-        white_knight = Knight('WHITE')
-        black_knight = Knight('BLACK')
+        white_knight = Knight('BLANCAS')
+        black_knight = Knight('NEGRAS')
         self.assertEqual(white_knight.symbol(), '♞')
         self.assertEqual(black_knight.symbol(), '♞')
 

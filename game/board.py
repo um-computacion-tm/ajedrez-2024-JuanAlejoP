@@ -82,14 +82,14 @@ class Board:
 class BoardInitializer:
     def __init__(self):
         self.white_back_row = [
-            Rook('WHITE'), Knight('WHITE'), Bishop('WHITE'),
-            Queen('WHITE'), King('WHITE'), Bishop('WHITE'),
-            Knight('WHITE'), Rook('WHITE')
+            Rook('BLANCAS'), Knight('BLANCAS'), Bishop('BLANCAS'),
+            Queen('BLANCAS'), King('BLANCAS'), Bishop('BLANCAS'),
+            Knight('BLANCAS'), Rook('BLANCAS')
         ]
         self.black_back_row = [
-            Rook('BLACK'), Knight('BLACK'), Bishop('BLACK'),
-            Queen('BLACK'), King('BLACK'), Bishop('BLACK'),
-            Knight('BLACK'), Rook('BLACK')
+            Rook('NEGRAS'), Knight('NEGRAS'), Bishop('NEGRAS'),
+            Queen('NEGRAS'), King('NEGRAS'), Bishop('NEGRAS'),
+            Knight('NEGRAS'), Rook('NEGRAS')
         ]
 
     def initialize(self, board: Board):
@@ -97,10 +97,10 @@ class BoardInitializer:
             board.place_piece(piece, 0, col)
 
         for col in range(8):
-            board.place_piece(Pawn('WHITE'), 1, col)
+            board.place_piece(Pawn('BLANCAS'), 1, col)
 
         for col in range(8):
-            board.place_piece(Pawn('BLACK'), 6, col)
+            board.place_piece(Pawn('NEGRAS'), 6, col)
 
         for col, piece in enumerate(self.black_back_row):
             board.place_piece(piece, 7, col)

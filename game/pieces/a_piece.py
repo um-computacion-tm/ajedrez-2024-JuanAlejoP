@@ -23,9 +23,9 @@ class Piece(ABC):
         pass
 
     def default_display_colour(self):
-        if self.colour == 'WHITE':
+        if self.colour == 'BLANCAS':
             return Fore.WHITE
-        elif self.colour == 'BLACK':
+        elif self.colour == 'NEGRAS':
             return Fore.BLACK
 
     def coloured_symbol(self):

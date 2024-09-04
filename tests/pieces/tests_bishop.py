@@ -4,12 +4,12 @@ from game.pieces import Bishop
 class TestBishop(unittest.TestCase):
 
     def setUp(self):
-        self.white_bishop = Bishop('WHITE')
-        self.black_bishop = Bishop('BLACK')
+        self.white_bishop = Bishop('BLANCAS')
+        self.black_bishop = Bishop('NEGRAS')
 
     def test_bishop_symbols(self):
-        white_bishop = Bishop('WHITE')
-        black_bishop = Bishop('BLACK')
+        white_bishop = Bishop('BLANCAS')
+        black_bishop = Bishop('NEGRAS')
         self.assertEqual(white_bishop.symbol(), '♝')
         self.assertEqual(black_bishop.symbol(), '♝')
 

@@ -35,13 +35,16 @@ class ConsoleIO:
         print(board)
 
     def choose_colour_scheme(self):
-        choice = input('Elige un esquema de color: ')
+        choice = input(f'\nElegí colores para las piezas BLANCAS/NEGRAS: ')
 
         if choice == '1':
+            print('Elegiste colores Blanco/Negro')
             return Fore.WHITE, Fore.BLACK
         elif choice == '2':
+            print('Elegiste colores Azul/Rojo')
             return Fore.BLUE, Fore.RED
         elif choice == '3':
+            print('Elegiste colores Amarillo/Morado')
             return Fore.YELLOW, Fore.MAGENTA
         else:
             return None

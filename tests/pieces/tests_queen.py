@@ -4,12 +4,12 @@ from game.pieces import Queen
 class TestQueen(unittest.TestCase):
 
     def setUp(self):
-        self.white_queen = Queen('WHITE')
-        self.black_queen = Queen('BLACK')
+        self.white_queen = Queen('BLANCAS')
+        self.black_queen = Queen('NEGRAS')
 
     def test_queen_symbols(self):
-        white_queen = Queen('WHITE')
-        black_queen = Queen('BLACK')
+        white_queen = Queen('BLANCAS')
+        black_queen = Queen('NEGRAS')
         self.assertEqual(white_queen.symbol(), '♛')
         self.assertEqual(black_queen.symbol(), '♛')
 

@@ -44,14 +44,15 @@ class Game:
                 for col in range(8):
                     piece = self.chess.board.get_piece(row, col)
                     if piece:
-                        piece.display_colour = colour_scheme[0] if piece.colour == 'WHITE' else colour_scheme[1]
+                        piece.display_colour = colour_scheme[0] if piece.colour == 'BLANCAS' else \
+                        colour_scheme[1]
 
     def main_menu(self):
         while True:
             print('1. Jugar')
             print('2. Configurar colores')
             print('3. Salir del juego')
-            choice = input('Elegí una opción: ')
+            choice = input(f'\nElegí una opción: ')
 
             if choice == '1':
                 while True:

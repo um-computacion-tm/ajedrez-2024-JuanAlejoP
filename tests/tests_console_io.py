@@ -20,8 +20,8 @@ class TestConsoleIO(unittest.TestCase):
 
     @patch('builtins.print')
     def test_output_turn(self, mock_print):
-        self.console_io.output_turn('Blancas')
-        mock_print.assert_called_once_with('TURNO: Blancas')
+        self.console_io.output_turn('BLANCAS')
+        mock_print.assert_called_once_with('TURNO: BLANCAS')
 
     @patch('builtins.print')
     def test_output_error(self, mock_print):

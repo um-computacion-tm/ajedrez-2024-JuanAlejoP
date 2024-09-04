@@ -37,7 +37,7 @@ class TestBoard(unittest.TestCase):
     def test_get_piece(self):
         piece = self.board.get_piece(0, 0)
         self.assertIsInstance(piece, Rook)
-        self.assertEqual(piece.colour, 'WHITE')
+        self.assertEqual(piece.colour, 'BLANCAS')
 
     def test_within_bounds(self):
         self.assertTrue(self.board.within_bounds(0, 0))

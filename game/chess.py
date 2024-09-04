@@ -6,7 +6,7 @@ class Chess:
         if board_initializer is None:
             board_initializer = BoardInitializer()
         board_initializer.initialize(self.__board__)
-        self.__turn__ = 'WHITE'
+        self.__turn__ = 'BLANCAS'
         self.game_over = False
 
     @property
@@ -51,7 +51,7 @@ class Chess:
         return True
 
     def is_valid_pawn_move(self, pawn, from_row, from_col, to_row, to_col):
-        direction = 1 if pawn.colour == 'WHITE' else -1
+        direction = 1 if pawn.colour == 'BLANCAS' else -1
         
         if from_col == to_col:
             if to_row == from_row + direction and not self.__board__.is_occupied(to_row, to_col):
@@ -66,7 +66,7 @@ class Chess:
         return False
 
     def change_turn(self):
-        self.__turn__ = 'BLACK' if self.__turn__ == 'WHITE' else 'WHITE'
+        self.__turn__ = 'NEGRAS' if self.__turn__ == 'BLANCAS' else 'BLANCAS'
 
     def end_game(self, message):
         self.game_over = True

@@ -4,12 +4,12 @@ from game.pieces import Pawn
 class TestPawn(unittest.TestCase):
 
     def setUp(self):
-        self.white_pawn = Pawn('WHITE')
-        self.black_pawn = Pawn('BLACK')
+        self.white_pawn = Pawn('BLANCAS')
+        self.black_pawn = Pawn('NEGRAS')
 
     def test_pawn_symbols(self):
-        white_pawn = Pawn('WHITE')
-        black_pawn = Pawn('BLACK')
+        white_pawn = Pawn('BLANCAS')
+        black_pawn = Pawn('NEGRAS')
         self.assertEqual(white_pawn.symbol(), '♟')
         self.assertEqual(black_pawn.symbol(), '♟')
 

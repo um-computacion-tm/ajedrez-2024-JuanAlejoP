@@ -4,12 +4,12 @@ from game.pieces import King
 class TestKing(unittest.TestCase):
 
     def setUp(self):
-        self.white_king = King('WHITE')
-        self.black_king = King('BLACK')
+        self.white_king = King('BLANCAS')
+        self.black_king = King('NEGRAS')
 
     def test_king_symbols(self):
-        white_king = King('WHITE')
-        black_king = King('BLACK')
+        white_king = King('BLANCAS')
+        black_king = King('NEGRAS')
         self.assertEqual(white_king.symbol(), '♚')
         self.assertEqual(black_king.symbol(), '♚')
 
