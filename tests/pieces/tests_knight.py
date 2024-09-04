@@ -22,6 +22,5 @@ class TestKnight(unittest.TestCase):
         self.assertFalse(self.black_knight.move(7, 1, 0, 0))
 
 
-
 if __name__ == '__main__':
     unittest.main()

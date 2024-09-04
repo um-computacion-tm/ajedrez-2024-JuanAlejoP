@@ -26,6 +26,5 @@ class TestQueen(unittest.TestCase):
         self.assertFalse(self.black_queen.move(7, 7, 5, 6))
 
 
-
 if __name__ == '__main__':
     unittest.main()

@@ -26,6 +26,5 @@ class TestRook(unittest.TestCase):
         self.assertFalse(self.black_rook.move(0, 0, 1, 2))
 
 
-
 if __name__ == '__main__':
     unittest.main()

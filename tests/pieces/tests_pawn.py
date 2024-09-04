@@ -26,6 +26,5 @@ class TestPawn(unittest.TestCase):
         self.assertFalse(self.black_pawn.move(6, 0, 4, 1))
 
 
-
 if __name__ == '__main__':
     unittest.main()

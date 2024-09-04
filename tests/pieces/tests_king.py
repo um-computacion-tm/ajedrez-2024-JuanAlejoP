@@ -22,6 +22,5 @@ class TestKing(unittest.TestCase):
         self.assertFalse(self.black_king.move(4, 4, 4, 6))
 
 
-
 if __name__ == '__main__':
     unittest.main()

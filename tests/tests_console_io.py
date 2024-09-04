@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from game.console_io import ConsoleIO
+from game.console_io import ConsoleIO, Fore
 
 class TestConsoleIO(unittest.TestCase):
     
@@ -31,7 +31,7 @@ class TestConsoleIO(unittest.TestCase):
     @patch('builtins.print')
     def test_output_error(self, mock_print):
         self.console_io.output_error('Movimiento inválido')
-        mock_print.assert_called_once_with(f'\n¡ERROR! Movimiento inválido')
+        mock_print.assert_called_once_with('\n¡ERROR! Movimiento inválido')
 
     @patch('builtins.print')
     def test_output_board(self, mock_print):
@@ -39,6 +39,30 @@ class TestConsoleIO(unittest.TestCase):
         self.console_io.output_board(board)
         mock_print.assert_called_once_with(board)
 
+    @patch('builtins.input', side_effect=['1'])
+    def test_choose_colour_scheme_valid_option(self, mock_input):
+        colours = self.console_io.choose_colour_scheme()
+        self.assertEqual(colours, (Fore.WHITE, Fore.BLACK))
+
+    @patch('builtins.input', side_effect=['4'])
+    def test_choose_colour_scheme_invalid_option(self, mock_input):
+        colours = self.console_io.choose_colour_scheme()
+        self.assertIsNone(colours)
+
+    @patch('builtins.input', side_effect=['Y', 'Y'])
+    def test_prompt_draw_agreement(self, mock_input):
+        result = self.console_io.prompt_draw()
+        self.assertTrue(result)
+
+    @patch('builtins.input', side_effect=['Y', 'N'])
+    def test_prompt_draw_one_accept(self, mock_input):
+        result = self.console_io.prompt_draw()
+        self.assertFalse(result)
+
+    @patch('builtins.input', side_effect=['N', 'N'])
+    def test_prompt_draw_disagreement(self, mock_input):
+        result = self.console_io.prompt_draw()
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':

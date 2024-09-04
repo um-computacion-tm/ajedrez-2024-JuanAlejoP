@@ -22,6 +22,5 @@ class TestBishop(unittest.TestCase):
         self.assertFalse(self.black_bishop.move(7, 2, 7, 0))
 
 
-
 if __name__ == '__main__':
     unittest.main()

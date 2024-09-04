@@ -1,6 +1,6 @@
 import unittest
 from game.chess import Chess
-from game.pieces import *
+from game.pieces import Pawn, King, Knight
 
 class TestChess(unittest.TestCase):
 
@@ -44,6 +44,11 @@ class TestChess(unittest.TestCase):
         self.chess.move(6, 1, 4, 1)
         self.assertTrue(self.chess.is_valid_pawn_move(self.chess.board.get_piece(3, 0), 3, 0, 4, 1))
 
+    def test_knight_move(self):
+        knight = self.chess.board.get_piece(0, 1)
+        self.assertTrue(self.chess.is_valid_move(knight, 0, 1, 2, 2))
+        self.assertFalse(self.chess.is_valid_move(knight, 0, 1, 3, 3))
+
     def test_turn_change(self):
         self.assertEqual(self.chess.turn, 'BLANCAS')
         self.chess.change_turn()
@@ -51,6 +56,15 @@ class TestChess(unittest.TestCase):
         self.chess.change_turn()
         self.assertEqual(self.chess.turn, 'BLANCAS')
 
+    def test_capture_king(self):
+        self.chess.move(1, 3, 3, 3)
+        self.chess.move(6, 5, 5, 5)
+        self.chess.move(0, 3, 2, 3)
+        self.chess.move(7, 4, 6, 5)
+        self.chess.move(2, 3, 5, 6)
+        self.chess.move(6, 5, 7, 4)
+        self.chess.move(5, 6, 7, 4)
+        self.assertTrue(self.chess.game_over)
 
 
 if __name__ == '__main__':
