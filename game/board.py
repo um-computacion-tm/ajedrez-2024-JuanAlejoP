@@ -65,18 +65,18 @@ class Board:
         self.__positions__[from_row][from_col] = None
 
     def __str__(self):
-        board_str = "    a   b   c   d   e   f   g   h  \n"
-        board_str += "  " + "-" * 33 + "\n"
+        board_str = '    a   b   c   d   e   f   g   h  \n'
+        board_str += '  ' + '-' * 33 + '\n'
         for i, row in enumerate(self.__positions__):
-            row_str = f"{i+1} |"
+            row_str = f'{i+1} |'
             for piece in row:
                 if piece is None:
-                    row_str += "   |"
+                    row_str += '   |'
                 else:
-                    row_str += f" {piece.coloured_symbol()} |"
-            board_str += row_str + f" {i+1}\n"
-            board_str += "  " + "-" * 33 + "\n"
-        board_str += "    a   b   c   d   e   f   g   h  \n"
+                    row_str += f' {piece.coloured_symbol()} |'
+            board_str += row_str + f' {i+1}\n'
+            board_str += '  ' + '-' * 33 + '\n'
+        board_str += '    a   b   c   d   e   f   g   h  \n'
         return board_str
 
 class BoardInitializer:
