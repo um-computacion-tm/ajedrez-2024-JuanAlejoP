@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 from game.console_io import ConsoleIO
 
 class TestConsoleIO(unittest.TestCase):
@@ -19,9 +19,14 @@ class TestConsoleIO(unittest.TestCase):
         self.assertEqual(self.console_io.algebraic_to_index('c5'), (4, 2))
 
     @patch('builtins.print')
-    def test_output_turn(self, mock_print):
-        self.console_io.output_turn('BLANCAS')
-        mock_print.assert_called_once_with('TURNO: BLANCAS')
+    @patch('game.pieces.King')
+    def test_output_turn(self, mock_king, mock_print):
+        mock_king_instance = MagicMock()
+        mock_king_instance.coloured_symbol.return_value = '♚'
+        mock_king.return_value = mock_king_instance
+        
+        self.console_io.output_turn('BLANCAS', mock_king_instance)
+        mock_print.assert_called_once_with('TURNO: BLANCAS ♚')
 
     @patch('builtins.print')
     def test_output_error(self, mock_print):
