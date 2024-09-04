@@ -8,11 +8,12 @@ class Game:
     def __init__(self, chess: Chess, io_handler: ConsoleIO):
         self.chess = chess
         self.io_handler = io_handler
+        self.king = self.chess.kings
 
     def play(self):
         try:
             self.io_handler.output_board(self.chess.board)
-            self.io_handler.output_turn(self.chess.turn)
+            self.io_handler.output_turn(self.chess.turn, self.king[self.chess.turn])
             move_input = self.io_handler.input_move()
 
             if move_input[0] == 'empate':
@@ -27,9 +28,9 @@ class Game:
     def request_draw(self):
         draw_request = self.io_handler.prompt_draw()
         if draw_request:
-            self.chess.end_game('El juego terminó en empate por acuerdo mutuo.')
+            self.chess.end_game('\n¡El juego terminó en empate por acuerdo mutuo!')
         else:
-            print('No hubo acuerdo, el juego continúa.')
+            print('\n¡No hubo acuerdo, el juego continúa!')
 
     def configure_colours(self):
         print('1. Blanco/Negro')

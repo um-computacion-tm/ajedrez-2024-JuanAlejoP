@@ -1,4 +1,5 @@
 from colorama import Fore
+from game.pieces import King
 
 class ConsoleIO:
 
@@ -25,8 +26,8 @@ class ConsoleIO:
         row = int(pos[1]) - 1
         return row, col
 
-    def output_turn(self, turn):
-        print(f'TURNO: {turn}')
+    def output_turn(self, turn, king):
+        print(f'TURNO: {turn} {king.coloured_symbol()}')
 
     def output_error(self, error_message):
         print(f'\n¡ERROR! {error_message}')

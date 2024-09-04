@@ -6,6 +6,10 @@ class Chess:
         if board_initializer is None:
             board_initializer = BoardInitializer()
         board_initializer.initialize(self.__board__)
+        self.kings = {
+            'BLANCAS': self.__board__.__positions__[0][4],
+            'NEGRAS': self.__board__.__positions__[7][4]
+            }
         self.__turn__ = 'BLANCAS'
         self.game_over = False
 
@@ -33,12 +37,12 @@ class Chess:
         if target_piece and target_piece.colour == piece.colour:
             raise ValueError('No podés capturar piezas de tu mismo color.')
         if not self.__board__.has_pieces(self.__turn__):
-            self.end_game(f'¡No quedan piezas {self.__turn__}!')
+            self.end_game(f'\n¡No quedan piezas {self.__turn__}!')
             self.change_turn()
             print(f'¡Ganan las {self.__turn__}!')
         self.__board__.move_piece(from_row, from_col, to_row, to_col)
         if isinstance(target_piece, King):
-            self.end_game(f'¡El rey {target_piece.colour} ha sido capturado!')
+            self.end_game(f'\n¡El rey de las {target_piece.colour} ha sido capturado!')
             print(f'¡Ganan las {self.__turn__}!')
         else:
             self.change_turn()
