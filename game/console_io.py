@@ -8,17 +8,15 @@ class ConsoleIO:
             return 'empate', None, None, None
         to_pos = input('Hacia casilla: ').strip().lower()
         if not from_pos or not to_pos:
-            raise ValueError("No ingresaste un movimiento.")
+            raise ValueError('No ingresaste un movimiento.')
 
         from_row, from_col = self.algebraic_to_index(from_pos)
         to_row, to_col = self.algebraic_to_index(to_pos)
-
         return from_row, from_col, to_row, to_col
 
     def prompt_draw(self):
-        confirm1 = input("¿Jugador 1 desea declarar empate? (Y/N): ").strip().upper()
-        confirm2 = input("¿Jugador 2 desea declarar empate? (Y/N): ").strip().upper()
-
+        confirm1 = input('¿Jugador 1 desea declarar empate? (Y/N): ').strip().upper()
+        confirm2 = input('¿Jugador 2 desea declarar empate? (Y/N): ').strip().upper()
         return confirm1 == 'Y' and confirm2 == 'Y'
 
     def algebraic_to_index(self, pos):
@@ -28,22 +26,22 @@ class ConsoleIO:
         return row, col
 
     def output_turn(self, turn):
-        print(f'Turno: {turn}')
+        print(f'TURNO: {turn}')
 
     def output_error(self, error_message):
-        print('ERROR!', error_message)
+        print(f'\n¡ERROR! {error_message}')
 
     def output_board(self, board):
         print(board)
 
     def choose_colour_scheme(self):
-        choice = input("Elige un esquema de color: ")
+        choice = input('Elige un esquema de color: ')
 
-        if choice == "1":
+        if choice == '1':
             return Fore.WHITE, Fore.BLACK
-        elif choice == "2":
+        elif choice == '2':
             return Fore.BLUE, Fore.RED
-        elif choice == "3":
+        elif choice == '3':
             return Fore.YELLOW, Fore.MAGENTA
         else:
             return None

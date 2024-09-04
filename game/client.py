@@ -27,13 +27,15 @@ class Game:
     def request_draw(self):
         draw_request = self.io_handler.prompt_draw()
         if draw_request:
-            self.chess.end_game("El juego terminó en empate por acuerdo mutuo.")
+            self.chess.end_game('El juego terminó en empate por acuerdo mutuo.')
+        else:
+            print('No hubo acuerdo, el juego continúa.')
 
     def configure_colours(self):
-        print("1. Blanco/Negro")
-        print("2. Azul/Rojo")
-        print("3. Amarillo/Morado")
-        print("4. Volver al menú principal")
+        print('1. Blanco/Negro')
+        print('2. Azul/Rojo')
+        print('3. Amarillo/Morado')
+        print('4. Volver al menú principal')
 
         colour_scheme = self.io_handler.choose_colour_scheme()
         
@@ -42,26 +44,26 @@ class Game:
                 for col in range(8):
                     piece = self.chess.board.get_piece(row, col)
                     if piece:
-                        piece.display_colour = colour_scheme[0] if piece.colour == "WHITE" else colour_scheme[1]
+                        piece.display_colour = colour_scheme[0] if piece.colour == 'WHITE' else colour_scheme[1]
 
     def main_menu(self):
         while True:
-            print("1. Jugar")
-            print("2. Configurar colores")
-            print("3. Salir")
-            choice = input("Elige una opción: ")
+            print('1. Jugar')
+            print('2. Configurar colores')
+            print('3. Salir del juego')
+            choice = input('Elegí una opción: ')
 
-            if choice == "1":
+            if choice == '1':
                 while True:
                     self.play()
                     if self.chess.game_over:
                         break
                 self.io_handler.output_board(self.chess.board)
                 break
-            elif choice == "2":
+            elif choice == '2':
                 self.configure_colours()
-            elif choice == "3":
-                print("¡Gracias por jugar!")
+            elif choice == '3':
+                print('\nSaliendo...\n')
                 break
 
 def main():
