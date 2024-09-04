@@ -7,7 +7,7 @@ class Knight(Piece):
 
     def move(self, from_row, from_col, to_row, to_col):
         return self.is_knight_move(from_row, from_col, to_row, to_col)
-    
+
     def is_knight_move(self, from_row, from_col, to_row, to_col):
         row_diff = abs(from_row - to_row)
         col_diff = abs(from_col - to_col)
