@@ -16,6 +16,13 @@ class Board:
     def within_bounds(self, row, col):
         return 0 <= row < 8 and 0 <= col < 8
 
+    def has_pieces(self, colour):
+        for row in self.__positions__:
+            for piece in row:
+                if piece and piece.colour == colour:
+                    return True
+        return False
+
     def is_path_blocked(self, from_row, from_col, to_row, to_col):
         if from_row == to_row:
             return self.horizontal_path_blocked(from_row, from_col, to_col)
