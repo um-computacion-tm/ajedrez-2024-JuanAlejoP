@@ -7,6 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2024-09-04
+
+### Added
+
+- Added tests for new features and adjusted existing tests to match the updated turn display format.
+
+### Changed
+
+- Fixed the starting positions of the kings and queens. Kings now start at e1 and e8, and queens start at d1 and d8, respectively.
+- Added validation to ensure pieces of a specific colour can only move during their turn. White pieces can only move on white's turn, and black pieces can only move on black's turn.
+- Implemented game termination conditions: the game ends when a king is captured, when all pieces of a colour are gone, or when both players agree to a draw.
+- Improved the error message for empty move input to clarify the requirement for proper move notation (e.g., e4 e5).
+- Refactored code for better clarity and consistency in style.
+- Changed designation from 'WHITE' and 'BLACK' to 'BLANCAS' and 'NEGRAS' for identifying pieces and turns in the code and during gameplay.
+- Enhanced turn display to show the current king's representation alongside the turn indicator (e.g., 'TURNO: BLANCAS' now also shows the white king).
+
+### Fixed
+
+- Corrected the representation and positioning of kings and queens.
+- Fixed issues related to move validation and game termination conditions.
+
+## [0.2.5] - 2024-09-01
+
+### Changed
+
+- Adjusted piece symbol handling to return a single symbol, removing color dependency.
+- Refactored the `Board` class to display pieces with their colored symbols using the `coloured_symbol` method.
+- Updated `ConsoleIO` and `Game` classes to handle color customization and board output with the new symbol handling.
+- Removed the `colours` module and `ColourScheme` class as part of the refactoring.
+- Refactored tests to accommodate the changes in symbol representation for pieces.
+- Ensured all pieces and the board use the `coloured_symbol` method for consistent terminal representation.
+
+### Removed
+
+- Removed the `colours` module and `ColourScheme` class.
+
+### Fixed
+
+- Fixed symbol representation issues to ensure all pieces display correctly.
+
 ## [0.2.4] - 2028-08-30
 
 ### Added

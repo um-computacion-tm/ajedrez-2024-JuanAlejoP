@@ -12,8 +12,8 @@ class TestBoard(unittest.TestCase):
         self.assertIsInstance(self.board.get_piece(0, 0), Rook)
         self.assertIsInstance(self.board.get_piece(0, 1), Knight)
         self.assertIsInstance(self.board.get_piece(0, 2), Bishop)
-        self.assertIsInstance(self.board.get_piece(0, 3), King)
-        self.assertIsInstance(self.board.get_piece(0, 4), Queen)
+        self.assertIsInstance(self.board.get_piece(0, 3), Queen)
+        self.assertIsInstance(self.board.get_piece(0, 4), King)
         self.assertIsInstance(self.board.get_piece(0, 5), Bishop)
         self.assertIsInstance(self.board.get_piece(0, 6), Knight)
         self.assertIsInstance(self.board.get_piece(0, 7), Rook)
@@ -28,8 +28,8 @@ class TestBoard(unittest.TestCase):
         self.assertIsInstance(self.board.get_piece(7, 0), Rook)
         self.assertIsInstance(self.board.get_piece(7, 1), Knight)
         self.assertIsInstance(self.board.get_piece(7, 2), Bishop)
-        self.assertIsInstance(self.board.get_piece(7, 3), King)
-        self.assertIsInstance(self.board.get_piece(7, 4), Queen)
+        self.assertIsInstance(self.board.get_piece(7, 3), Queen)
+        self.assertIsInstance(self.board.get_piece(7, 4), King)
         self.assertIsInstance(self.board.get_piece(7, 5), Bishop)
         self.assertIsInstance(self.board.get_piece(7, 6), Knight)
         self.assertIsInstance(self.board.get_piece(7, 7), Rook)
@@ -37,7 +37,7 @@ class TestBoard(unittest.TestCase):
     def test_get_piece(self):
         piece = self.board.get_piece(0, 0)
         self.assertIsInstance(piece, Rook)
-        self.assertEqual(piece.colour, 'WHITE')
+        self.assertEqual(piece.colour, 'BLANCAS')
 
     def test_within_bounds(self):
         self.assertTrue(self.board.within_bounds(0, 0))
@@ -59,9 +59,6 @@ class TestBoard(unittest.TestCase):
         self.board.move_piece(1, 0, 3, 0)
         self.assertIsInstance(self.board.get_piece(3, 0), Pawn)
         self.assertIsNone(self.board.get_piece(1, 0))
-
-
-
 
 
 if __name__ == '__main__':

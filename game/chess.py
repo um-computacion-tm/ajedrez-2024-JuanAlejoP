@@ -6,8 +6,13 @@ class Chess:
         if board_initializer is None:
             board_initializer = BoardInitializer()
         board_initializer.initialize(self.__board__)
-        self.__turn__ = 'WHITE'
-    
+        self.kings = {
+            'BLANCAS': self.__board__.__positions__[0][4],
+            'NEGRAS': self.__board__.__positions__[7][4]
+            }
+        self.__turn__ = 'BLANCAS'
+        self.game_over = False
+
     @property
     def board(self):
         return self.__board__
@@ -23,14 +28,24 @@ class Chess:
         if piece is None:
             raise ValueError('No hay pieza en esa posición.')
         if not self.is_valid_move(piece, from_row, from_col, to_row, to_col):
-            raise ValueError('Movimiento inválido para esta pieza.')
-        if not isinstance(piece, Knight) and self.__board__.is_path_blocked(from_row, from_col, to_row, to_col):
+            raise ValueError('Movimiento inválido para esa pieza.')
+        if not isinstance(piece, Knight) and \
+            self.__board__.is_path_blocked(from_row, from_col, to_row, to_col):
             raise ValueError('El camino está bloqueado por otra pieza.')
+        if piece.colour != self.__turn__:
+            raise ValueError(f'Es turno de las {self.turn}.')
         if target_piece and target_piece.colour == piece.colour:
-            raise ValueError('No puedes capturar una pieza del mismo color.')
-
+            raise ValueError('No podés capturar piezas de tu mismo color.')
+        if not self.__board__.has_pieces(self.__turn__):
+            self.end_game(f'\n¡No quedan piezas {self.__turn__}!')
+            self.change_turn()
+            print(f'¡Ganan las {self.__turn__}!')
         self.__board__.move_piece(from_row, from_col, to_row, to_col)
-        self.change_turn()
+        if isinstance(target_piece, King):
+            self.end_game(f'\n¡El rey de las {target_piece.colour} ha sido capturado!')
+            print(f'¡Ganan las {self.__turn__}!')
+        else:
+            self.change_turn()
 
     def is_valid_move(self, piece, from_row, from_col, to_row, to_col):
         if isinstance(piece, Pawn):
@@ -40,17 +55,23 @@ class Chess:
         return True
 
     def is_valid_pawn_move(self, pawn, from_row, from_col, to_row, to_col):
-        direction = 1 if pawn.colour == 'WHITE' else -1
+        direction = 1 if pawn.colour == 'BLANCAS' else -1
         
         if from_col == to_col:
             if to_row == from_row + direction and not self.__board__.is_occupied(to_row, to_col):
                 return True
-            if (from_row == 1 or from_row == 6) and to_row == from_row + 2 * direction and not self.__board__.is_occupied(to_row, to_col):
+            if (from_row == 1 or from_row == 6) and to_row == from_row + 2 * direction and not \
+                self.__board__.is_occupied(to_row, to_col):
                 return True
         elif abs(from_col - to_col) == 1 and to_row == from_row + direction:
-            if self.__board__.is_occupied(to_row, to_col) and self.__board__.get_piece(to_row, to_col).colour != pawn.colour:
+            if self.__board__.is_occupied(to_row, to_col) and \
+                self.__board__.get_piece(to_row, to_col).colour != pawn.colour:
                 return True
         return False
 
     def change_turn(self):
-        self.__turn__ = 'BLACK' if self.__turn__ == 'WHITE' else 'WHITE'
+        self.__turn__ = 'NEGRAS' if self.__turn__ == 'BLANCAS' else 'BLANCAS'
+
+    def end_game(self, message):
+        self.game_over = True
+        print(message)

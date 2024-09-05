@@ -4,13 +4,13 @@ from game.pieces import Rook
 class TestRook(unittest.TestCase):
 
     def setUp(self):
-        self.white_rook = Rook('WHITE')
-        self.black_rook = Rook('BLACK')
+        self.white_rook = Rook('BLANCAS')
+        self.black_rook = Rook('NEGRAS')
 
     def test_rook_symbols(self):
-        white_rook = Rook('WHITE')
-        black_rook = Rook('BLACK')
-        self.assertEqual(white_rook.symbol(), '♖')
+        white_rook = Rook('BLANCAS')
+        black_rook = Rook('NEGRAS')
+        self.assertEqual(white_rook.symbol(), '♜')
         self.assertEqual(black_rook.symbol(), '♜')
 
     def test_horizontal_move(self):
@@ -24,7 +24,6 @@ class TestRook(unittest.TestCase):
     def test_invalid_move(self):
         self.assertFalse(self.white_rook.move(0, 0, 7, 7))
         self.assertFalse(self.black_rook.move(0, 0, 1, 2))
-
 
 
 if __name__ == '__main__':

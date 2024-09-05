@@ -4,13 +4,13 @@ from game.pieces import King
 class TestKing(unittest.TestCase):
 
     def setUp(self):
-        self.white_king = King('WHITE')
-        self.black_king = King('BLACK')
+        self.white_king = King('BLANCAS')
+        self.black_king = King('NEGRAS')
 
     def test_king_symbols(self):
-        white_king = King('WHITE')
-        black_king = King('BLACK')
-        self.assertEqual(white_king.symbol(), '♔')
+        white_king = King('BLANCAS')
+        black_king = King('NEGRAS')
+        self.assertEqual(white_king.symbol(), '♚')
         self.assertEqual(black_king.symbol(), '♚')
 
     def test_single_square_move(self):
@@ -20,7 +20,6 @@ class TestKing(unittest.TestCase):
     def test_invalid_move(self):
         self.assertFalse(self.white_king.move(4, 4, 6, 4))
         self.assertFalse(self.black_king.move(4, 4, 4, 6))
-
 
 
 if __name__ == '__main__':

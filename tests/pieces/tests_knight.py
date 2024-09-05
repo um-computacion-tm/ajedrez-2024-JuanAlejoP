@@ -4,13 +4,13 @@ from game.pieces import Knight
 class TestKnight(unittest.TestCase):
 
     def setUp(self):
-        self.white_knight = Knight('WHITE')
-        self.black_knight = Knight('BLACK')
+        self.white_knight = Knight('BLANCAS')
+        self.black_knight = Knight('NEGRAS')
 
     def test_knight_symbols(self):
-        white_knight = Knight('WHITE')
-        black_knight = Knight('BLACK')
-        self.assertEqual(white_knight.symbol(), '♘')
+        white_knight = Knight('BLANCAS')
+        black_knight = Knight('NEGRAS')
+        self.assertEqual(white_knight.symbol(), '♞')
         self.assertEqual(black_knight.symbol(), '♞')
 
     def test_l_shape_move(self):
@@ -20,7 +20,6 @@ class TestKnight(unittest.TestCase):
     def test_invalid_move(self):
         self.assertFalse(self.white_knight.move(0, 1, 0, 0))
         self.assertFalse(self.black_knight.move(7, 1, 0, 0))
-
 
 
 if __name__ == '__main__':

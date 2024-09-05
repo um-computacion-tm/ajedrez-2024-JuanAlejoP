@@ -4,13 +4,13 @@ from game.pieces import Pawn
 class TestPawn(unittest.TestCase):
 
     def setUp(self):
-        self.white_pawn = Pawn('WHITE')
-        self.black_pawn = Pawn('BLACK')
+        self.white_pawn = Pawn('BLANCAS')
+        self.black_pawn = Pawn('NEGRAS')
 
     def test_pawn_symbols(self):
-        white_pawn = Pawn('WHITE')
-        black_pawn = Pawn('BLACK')
-        self.assertEqual(white_pawn.symbol(), '♙')
+        white_pawn = Pawn('BLANCAS')
+        black_pawn = Pawn('NEGRAS')
+        self.assertEqual(white_pawn.symbol(), '♟')
         self.assertEqual(black_pawn.symbol(), '♟')
 
     def test_pawn_initial_double_step(self):
@@ -24,7 +24,6 @@ class TestPawn(unittest.TestCase):
     def test_pawn_invalid_move(self):
         self.assertFalse(self.white_pawn.move(1, 0, 3, 1))
         self.assertFalse(self.black_pawn.move(6, 0, 4, 1))
-
 
 
 if __name__ == '__main__':

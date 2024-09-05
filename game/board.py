@@ -16,6 +16,13 @@ class Board:
     def within_bounds(self, row, col):
         return 0 <= row < 8 and 0 <= col < 8
 
+    def has_pieces(self, colour):
+        for row in self.__positions__:
+            for piece in row:
+                if piece and piece.colour == colour:
+                    return True
+        return False
+
     def is_path_blocked(self, from_row, from_col, to_row, to_col):
         if from_row == to_row:
             return self.horizontal_path_blocked(from_row, from_col, to_col)
@@ -42,7 +49,7 @@ class Board:
     def diagonal_path_blocked(self, from_row, from_col, to_row, to_col):
         row_step = 1 if from_row < to_row else -1
         col_step = 1 if from_col < to_col else -1
-        for row, col in zip(range(from_row + row_step, to_row, row_step), 
+        for row, col in zip(range(from_row + row_step, to_row, row_step),
                             range(from_col + col_step, to_col, col_step)):
             if self.is_occupied(row, col):
                 return True
@@ -58,31 +65,31 @@ class Board:
         self.__positions__[from_row][from_col] = None
 
     def __str__(self):
-        board_str = "    a   b   c   d   e   f   g   h  \n"
-        board_str += "  " + "-" * 33 + "\n"
+        board_str = '    a   b   c   d   e   f   g   h  \n'
+        board_str += '  ' + '-' * 33 + '\n'
         for i, row in enumerate(self.__positions__):
-            row_str = f"{i+1} |"
+            row_str = f'{i+1} |'
             for piece in row:
                 if piece is None:
-                    row_str += "   |"
+                    row_str += '   |'
                 else:
-                    row_str += f" {piece.symbol()} |"
-            board_str += row_str + f" {i+1}\n"
-            board_str += "  " + "-" * 33 + "\n"
-        board_str += "    a   b   c   d   e   f   g   h  \n"
+                    row_str += f' {piece.coloured_symbol()} |'
+            board_str += row_str + f' {i+1}\n'
+            board_str += '  ' + '-' * 33 + '\n'
+        board_str += '    a   b   c   d   e   f   g   h  \n'
         return board_str
 
 class BoardInitializer:
     def __init__(self):
         self.white_back_row = [
-            Rook('WHITE'), Knight('WHITE'), Bishop('WHITE'), 
-            King('WHITE'), Queen('WHITE'), Bishop('WHITE'), 
-            Knight('WHITE'), Rook('WHITE')
+            Rook('BLANCAS'), Knight('BLANCAS'), Bishop('BLANCAS'),
+            Queen('BLANCAS'), King('BLANCAS'), Bishop('BLANCAS'),
+            Knight('BLANCAS'), Rook('BLANCAS')
         ]
         self.black_back_row = [
-            Rook('BLACK'), Knight('BLACK'), Bishop('BLACK'), 
-            King('BLACK'), Queen('BLACK'), Bishop('BLACK'), 
-            Knight('BLACK'), Rook('BLACK')
+            Rook('NEGRAS'), Knight('NEGRAS'), Bishop('NEGRAS'),
+            Queen('NEGRAS'), King('NEGRAS'), Bishop('NEGRAS'),
+            Knight('NEGRAS'), Rook('NEGRAS')
         ]
 
     def initialize(self, board: Board):
@@ -90,10 +97,10 @@ class BoardInitializer:
             board.place_piece(piece, 0, col)
 
         for col in range(8):
-            board.place_piece(Pawn('WHITE'), 1, col)
+            board.place_piece(Pawn('BLANCAS'), 1, col)
 
         for col in range(8):
-            board.place_piece(Pawn('BLACK'), 6, col)
+            board.place_piece(Pawn('NEGRAS'), 6, col)
 
         for col, piece in enumerate(self.black_back_row):
             board.place_piece(piece, 7, col)
