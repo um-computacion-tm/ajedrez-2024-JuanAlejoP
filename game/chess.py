@@ -1,6 +1,12 @@
 from game.board import *
 
 class Chess:
+    """Clase principal para manejar el juego de ajedrez.
+
+    Args:
+        board_initializer (BoardInitializer, optional): Inicializa el tablero si no se proporciona uno.
+    """
+    
     def __init__(self, board_initializer=None):
         self.__board__ = Board()
         if board_initializer is None:
@@ -15,13 +21,34 @@ class Chess:
 
     @property
     def board(self):
+        """Obtiene el tablero actual.
+
+        Returns:
+            Board: El tablero del juego.
+        """
         return self.__board__
 
     @property
     def turn(self):
+        """Obtiene el turno actual (BLANCAS o NEGRAS).
+
+        Returns:
+            str: El turno actual.
+        """
         return self.__turn__
 
     def move(self, from_row, from_col, to_row, to_col):
+        """Realiza un movimiento en el tablero.
+
+        Args:
+            from_row (int): Fila de origen.
+            from_col (int): Columna de origen.
+            to_row (int): Fila de destino.
+            to_col (int): Columna de destino.
+
+        Raises:
+            ValueError: Si el movimiento es inválido.
+        """
         piece = self.__board__.get_piece(from_row, from_col)
         target_piece = self.__board__.get_piece(to_row, to_col)
 
@@ -48,6 +75,18 @@ class Chess:
             self.change_turn()
 
     def is_valid_move(self, piece, from_row, from_col, to_row, to_col):
+        """Valida si un movimiento es correcto para la pieza dada.
+
+        Args:
+            piece (Piece): La pieza a mover.
+            from_row (int): Fila de origen.
+            from_col (int): Columna de origen.
+            to_row (int): Fila de destino.
+            to_col (int): Columna de destino.
+
+        Returns:
+            bool: True si el movimiento es válido, False en caso contrario.
+        """
         if isinstance(piece, Pawn):
             return self.is_valid_pawn_move(piece, from_row, from_col, to_row, to_col)
         if not piece.move(from_row, from_col, to_row, to_col):
@@ -55,6 +94,18 @@ class Chess:
         return True
 
     def is_valid_pawn_move(self, pawn, from_row, from_col, to_row, to_col):
+        """Valida el movimiento de un peón.
+
+        Args:
+            pawn (Pawn): Peón a mover.
+            from_row (int): Fila de origen.
+            from_col (int): Columna de origen.
+            to_row (int): Fila de destino.
+            to_col (int): Columna de destino.
+
+        Returns:
+            bool: True si el movimiento es válido, False en caso contrario.
+        """
         direction = 1 if pawn.colour == 'BLANCAS' else -1
         
         if from_col == to_col:
@@ -70,8 +121,14 @@ class Chess:
         return False
 
     def change_turn(self):
+        """Cambia el turno entre BLANCAS y NEGRAS."""
         self.__turn__ = 'NEGRAS' if self.__turn__ == 'BLANCAS' else 'BLANCAS'
 
     def end_game(self, message):
+        """Finaliza el juego con un mensaje.
+
+        Args:
+            message (str): Mensaje a mostrar al finalizar el juego.
+        """
         self.game_over = True
         print(message)
