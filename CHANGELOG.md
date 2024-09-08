@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2024-09-08
+
+### Added
+
+- Added documentation to all project files and tests, following the Google Docstrings style.
+
+### Fixed
+
+- Fixed the command in the Dockerfile to execute the project correctly.
+
 ## [1.0.0] - 2024-09-04
 
 ### Added
