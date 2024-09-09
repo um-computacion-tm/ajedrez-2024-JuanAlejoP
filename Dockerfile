@@ -7,7 +7,7 @@ WORKDIR /ajedrez-2024-JuanAlejoP
 
 RUN pip install -r requirements.txt
 
-CMD ["sh", "-c", "coverage run -m unittest && coverage report -m && python game/client.py"]
+CMD ["sh", "-c", "coverage run -m unittest && coverage report -m && python -m game.client"]
 
 # docker buildx build -t ajedrez-2024-juanalejop .
-# docker run -i ajedrez-2024-juanalejop
+# docker run -it ajedrez-2024-juanalejop

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2024-09-08
+
+### Added
+
+- Added detailed tutorial and Docker setup instructions to the README, including images and explanations on how to play the game, configure colors, and handle game end conditions.
+- Added Docker build and run instructions with details on ensuring colorama works correctly during execution.
+
 ## [1.0.1] - 2024-09-08
 
 ### Added
