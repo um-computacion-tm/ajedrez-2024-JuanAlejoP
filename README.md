@@ -73,7 +73,7 @@ Para ejecutar el proyecto tanto en modo testing como desplegado, usar el siguien
 ```sh
 docker run -it ajedrez-2024-juanalejop
 ```
-IMPORTANTE: es crucial que no faltera la flag '-it' para el correcto funcionamiento de colorama durante la ejecución de la imagen Docker.
+IMPORTANTE: es crucial que NO falte la flag '-it' para el correcto funcionamiento de colorama durante la ejecución de la imagen Docker.
 
 Esto mostrará un mensaje con el estado de los tests, y luego iniciará el cliente del juego a través de terminal.
 
